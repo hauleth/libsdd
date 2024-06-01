@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2024 Łukasz Niemier <#@hauleth.dev>
+#
+# SPDX-License-Identifier: MIT
+
+*.o
+*.a
+*.d
+
+/test/*.exe

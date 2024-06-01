@@ -5,6 +5,8 @@
 #ifndef SDD_H
 #define SDD_H 1
 
+#include <unistd.h>
+
 #define SD_EMERG   "<0>"  /* system is unusable */
 #define SD_ALERT   "<1>"  /* action must be taken immediately */
 #define SD_CRIT    "<2>"  /* critical conditions */

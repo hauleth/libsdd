@@ -6,15 +6,15 @@ SPDX-License-Identifier: MIT
 
 # systemd-daemons helper library
 
-In response of [CSV-2024-3094][] there was [rejected proposal][pr-32028] to `libsystemd` to
-reduce amount of dependencies, as most of systemd daemons do not require
-features provided by these dependencies. Goal of this project is to provide
-basic features of `libsystemd` without any dependencies.
+In response of [CSV-2024-3094][] there was [rejected proposal][pr-32028] to
+`libsystemd` to reduce amount of dependencies, as most of systemd daemons do not
+require features provided by these dependencies. Goal of this project is to
+provide basic features of `libsystemd` without any dependencies.
 
 ## Supported API
 
 - [x] syslog macros
-- [ ] `sd_notify*`
+- [x] `sd_notify*`
 - [ ] `sd_watchdog_enabled`
 - [ ] `sd_journal_print*`, `sd_journal_perror*`
 - [ ] `sd_booted`
