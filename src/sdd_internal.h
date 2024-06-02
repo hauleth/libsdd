@@ -6,6 +6,7 @@
 #define SDD_INTERNAL_H
 
 #include <string.h>
+#include <limits.h>
 
 #include <unistd.h>
 #include <sys/uio.h>
@@ -26,5 +27,13 @@ struct SockAddr {
 struct SockAddr sdd_parse_addr(char const *input);
 
 size_t sdd_addr_size(struct SockAddr const * const sa);
+
+enum SDD_ERRORS {
+  UNIMPLEMENTED = INT_MIN,
+  CMSG_FAILED,
+  ALLOC_FAILED,
+  SOCKET_NOT_AVAILABLE,
+  IGNORE = 0,
+};
 
 #endif /* SDD_INTERNAL_H */

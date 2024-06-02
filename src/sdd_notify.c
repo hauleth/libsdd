@@ -33,7 +33,7 @@ int sd_pid_notify_with_fds(
   e = getenv(NOTIFY_SOCKET);
   // There is no socket, so this should be a no-op call
   if (!e)
-    return 0;
+    return IGNORE;
 
   if (unset_environment) {
     unsetenv(NOTIFY_SOCKET);
@@ -43,7 +43,7 @@ int sd_pid_notify_with_fds(
 
   int sock = socket(sa.family, SOCK_DGRAM, 0);
   if (sock < 0)
-    return -1;
+    return SOCKET_NOT_AVAILABLE;
 
   struct iovec iov = IOVEC_MAKE_STRING(state);
   struct msghdr msg = {
@@ -62,7 +62,7 @@ int sd_pid_notify_with_fds(
 
     if (!buf) {
       perror("Allocation failed");
-      return -1;
+      return ALLOC_FAILED;
     }
 
     msg.msg_control = buf;
@@ -70,7 +70,7 @@ int sd_pid_notify_with_fds(
 
     struct cmsghdr *cmsg = CMSG_FIRSTHDR(&msg);
     if (cmsg == NULL) {
-      result = -1;
+      result = CMSG_FAILED;
       goto cmsg_buf_free;
     }
     cmsg->cmsg_level = SOL_SOCKET;
@@ -149,5 +149,5 @@ int sd_pid_notify_barrier(
   uint64_t timeout
 ) {
   // Not yet implemented
-  return -1;
+  return UNIMPLEMENTED;
 }

@@ -3,10 +3,17 @@
 // SPDX-License-Identifier: MIT
 
 #include <stdio.h>
+#include <assert.h>
 
 #include <sdd.h>
 
 int main() {
-  sd_notify(0, "READY=1");
+  int result = sd_notify(0, "READY=1");
+
+  if (result < 0) {
+    printf("Error: %d\n", result);
+    return 1;
+  }
+
   return 0;
 }

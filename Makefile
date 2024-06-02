@@ -23,7 +23,7 @@ clean:
 	rm -rf src/*.o
 	rm -rf src/*.d
 	rm -rf libsdd.a
-	rm -rf test/*.exe
+	rm -rf test/samples/*.exe
 
 -include ${deps}
 
